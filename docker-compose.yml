@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: firmpulse-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: firmpulse
+      POSTGRES_PASSWORD: firmpulse_password
+      POSTGRES_DB: firmpulse
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - firmpulse_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  firmpulse_postgres_data:
